@@ -63,7 +63,8 @@ val bundle = (project in file("bundle"))
     assembleArtifact in assemblyPackageScala := false,
     assemblyShadeRules in assembly := Seq(
       ShadeRule.zap("**module-info").inAll,
-      ShadeRule.rename("net.bytebuddy.agent.**" -> "kamon.lib.@0").inAll
+      ShadeRule.rename("net.bytebuddy.agent.**" -> "kamon.lib.@0").inAll,
+      ShadeRule.rename("net.sf.jsqlparser.**" -> "kamon.lib.@0").inAll
     ),
     assemblyMergeStrategy in assembly := {
       case "reference.conf" => MergeStrategy.concat
